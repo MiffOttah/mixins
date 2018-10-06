@@ -53,6 +53,8 @@
     <Compile Include="CacheTests.cs" />
     <Compile Include="PortionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GeneratorDictionaryTests.cs" />
+    <Compile Include="CompareTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
