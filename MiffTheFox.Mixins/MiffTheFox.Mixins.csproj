@@ -5,4 +5,8 @@
     <RootNamespace>MiffTheFox</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MiffTheFox.BinStringStandard" Version="1.4.0" />
+  </ItemGroup>
+
 </Project>
