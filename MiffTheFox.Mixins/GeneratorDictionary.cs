@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace MiffTheFox
+namespace MiffTheFox.Collections
 {
-    public class GeneratorDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+    internal class GeneratorDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
         private readonly Dictionary<TKey, TValue> _Values = new Dictionary<TKey, TValue>();
 
@@ -75,7 +75,7 @@ namespace MiffTheFox
         }
     }
 
-    public class DictionaryItemGenerationEventArgs<TKey, TValue> : EventArgs
+    internal class DictionaryItemGenerationEventArgs<TKey, TValue> : EventArgs
     {
         public TKey Key { get; }
         public bool ResultAvailable { get; set; }
