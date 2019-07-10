@@ -2,7 +2,7 @@
 
 namespace MiffTheFox.Geometry
 {
-    public struct Angle : IEquatable<Angle>, IComparable<Angle>, IFormattable
+    internal struct Angle : IEquatable<Angle>, IComparable<Angle>, IFormattable
     {
         public static readonly Angle Zero = new Angle(0, AngleUnit.Turns);
 
@@ -133,21 +133,21 @@ namespace MiffTheFox.Geometry
 
         public static explicit operator Portion(Angle angle) => new Portion(angle.Turns);
         public static explicit operator Angle(Portion portion) => new Angle(portion.Value, AngleUnit.Turns);
-    }
 
-    public enum AngleUnit : byte
-    {
-        /// <summary>Turns, where a complete circle is 1. Also the unit in radians as a multiple of τ (2π).</summary>
-        Turns = 0,
-        /// <summary>Degrees, where a complete circle is 360°.</summary>
-        Degrees = 1,
-        /// <summary>Radians, where a complete circle is 2π.</summary>
-        Radians = 2,
-        /// <summary>Radians as a multiple of π, where a complete circle is 2.</summary>
-        PiRadians = 3,
-        /// <summary>Gradians, where a complete circle is 400.</summary>
-        Gradians = 4,
-        /// <summary>Percent, where a complete circle is 100.</summary>
-        Percent = 5
+        internal enum AngleUnit : byte
+        {
+            /// <summary>Turns, where a complete circle is 1. Also the unit in radians as a multiple of τ (2π).</summary>
+            Turns = 0,
+            /// <summary>Degrees, where a complete circle is 360°.</summary>
+            Degrees = 1,
+            /// <summary>Radians, where a complete circle is 2π.</summary>
+            Radians = 2,
+            /// <summary>Radians as a multiple of π, where a complete circle is 2.</summary>
+            PiRadians = 3,
+            /// <summary>Gradians, where a complete circle is 400.</summary>
+            Gradians = 4,
+            /// <summary>Percent, where a complete circle is 100.</summary>
+            Percent = 5
+        }
     }
 }

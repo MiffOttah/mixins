@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiffTheFox.Geometry;
+using AngleUnit = MiffTheFox.Geometry.Angle.AngleUnit;
 using System;
 
 namespace MixinTests
