@@ -2,14 +2,36 @@
 
 namespace MiffTheFox.Geometry
 {
+    /// <summary>
+    /// Repersents a geometric angle in 2D space.
+    /// </summary>
     internal struct Angle : IEquatable<Angle>, IComparable<Angle>, IFormattable
     {
+        /// <summary>
+        /// The zero angle where both sides are the same ray.
+        /// </summary>
         public static readonly Angle Zero = new Angle(0, AngleUnit.Turns);
 
+        /// <summary>
+        /// The value of the angle in turns.
+        /// </summary>
         public readonly double Turns;
+
+        /// <summary>
+        /// The value of the angle in degrees.
+        /// </summary>
         public readonly double Degrees;
+
+        /// <summary>
+        /// The value of hte angle in radians.
+        /// </summary>
         public readonly double Radians;
 
+        /// <summary>
+        /// Creates an angle of the specified size and angle unit.
+        /// </summary>
+        /// <param name="value">The size of the angle.</param>
+        /// <param name="unit">The unit the size of the angle is measured in.</param>
         public Angle(double value, AngleUnit unit)
         {
             if (double.IsNaN(value)) throw new ArgumentException("Value cannot be NaN.", nameof(value));
@@ -18,6 +40,10 @@ namespace MiffTheFox.Geometry
             Radians = unit == AngleUnit.Radians ? value : Turns * GetConstantForAngleUnit(AngleUnit.Radians);
         }
 
+        /// <summary>
+        /// Gets the angle value that, in the specified unit, repersents a full circle.
+        /// </summary>
+        /// <param name="unit">The unit to get the constant for.</param>
         public static double GetConstantForAngleUnit(AngleUnit unit)
         {
             switch (unit)
@@ -32,6 +58,9 @@ namespace MiffTheFox.Geometry
             }
         }
 
+        /// <summary>
+        /// Returns the value of the angle in the specified unit.
+        /// </summary>
         public double ToUnit(AngleUnit unit) => Turns * GetConstantForAngleUnit(unit);
 
         public override string ToString() => ToString(AngleUnit.Turns, "G", null);
@@ -67,7 +96,7 @@ namespace MiffTheFox.Geometry
         public override bool Equals(object obj) => obj is Angle && Equals((Angle)obj);
         public bool Equals(Angle other) => Turns == other.Turns;
         public bool Equals(Angle other, double delta) => Math.Abs(Turns - other.Turns) < delta;
-        public override int GetHashCode() => 1224962691 + Turns.GetHashCode();
+        public override int GetHashCode() => unchecked(1224962691 + Turns.GetHashCode());
         public int CompareTo(Angle other) => Turns.CompareTo(other.Turns);
         public int CompareTo(Angle other, double delta)
         {
