@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 
-// WARNING - not ready for produciton use
+// WARNING - not ready for produciton useh
 
 namespace MiffTheFox
 {
@@ -19,9 +18,13 @@ namespace MiffTheFox
             switch (obj)
             {
                 case null:
-                case System.DBNull _:
+                case DBNull _:
                     // null values are always falsey
                     return false;
+
+                case bool b:
+                    // this one should have been obvious to me
+                    return b;
 
                 case string stringValue:
                     // the null case is handled above
@@ -51,16 +54,37 @@ namespace MiffTheFox
                     return ch != '\0';
 
                 case Enum e:
-                    // todo: default enum value
-                    throw new NotImplementedException();
+                    // use Activator to create the default enum
+                    // value, then compare it to the provided value
+                    return !Activator.CreateInstance(e.GetType()).Equals(e);
 
-                case System.Collections.ICollection collection:
-                    // todo: collection length
-                    throw new NotImplementedException();
+                case ICollection collection:
+                    // ICollection handles lists, dictionarys, arrays
+                    // and other collection types
+                    return collection.Count > 0;
 
-                // xxx: are there other types to check?
+                case IEnumerable enumerable:
+                    // if the length can't be read, but the value can
+                    // be enumerated, attempt to enumerate it
+                    IEnumerator enumerator = null;
+                    try
+                    {
+                        enumerator = enumerable.GetEnumerator();
+                        return enumerator.MoveNext();
+                    }
+                    finally
+                    {
+                        // IEnumerator<T> is required to be dispoable
+                        // idk if i've ever seen an enumerator that
+                        // would require disposing, but we
+                        // might as well since IEnumerator<T>s are far
+                        // more common than plan IEnumerators
+                        (enumerator as IDisposable).Dispose();
+                    }
 
                 default:
+                    // if we don't know what to do with the type,
+                    // then assume it's true
                     return true;
             }
         }
