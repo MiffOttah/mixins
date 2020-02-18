@@ -79,7 +79,7 @@ namespace MiffTheFox
                         // would require disposing, but we
                         // might as well since IEnumerator<T>s are far
                         // more common than plan IEnumerators
-                        (enumerator as IDisposable).Dispose();
+                        (enumerator as IDisposable)?.Dispose();
                     }
 
                 default:
