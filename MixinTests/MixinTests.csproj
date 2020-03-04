@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AngleTests.cs" />
     <Compile Include="CacheTests.cs" />
+    <Compile Include="DelegateCallHelper.cs" />
     <Compile Include="DisposbleCollectionTests.cs" />
     <Compile Include="DoubleDictionaryTests.cs" />
     <Compile Include="PortionTests.cs" />
