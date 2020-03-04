@@ -7,7 +7,7 @@ namespace MiffTheFox
 {
     internal static class Truthiness
     {
-        public static bool IsTruthy(this object obj)
+        public static bool IsTruthy<T>(this T obj)
         {
             // note: nullables will pattern-match as null if
             // lacking a value, or will pattern-match to the underlying
@@ -15,21 +15,24 @@ namespace MiffTheFox
             // with a value with the same mechanisms as for the underlying
             // type
 
+            // null values are always falsey
+            if (obj == null) return false;
+
             switch (obj)
             {
-                case null:
                 case DBNull _:
                     // null values are always falsey
                     return false;
-
-                case bool b:
-                    // this one should have been obvious to me
-                    return b;
 
                 case string stringValue:
                     // the null case is handled above
                     // so only check if the string is empty
                     return stringValue.Length > 0;
+
+                case bool b:
+                    // bool values are truthy if true
+                    // seems pretty straighforward :)
+                    return b;
 
                 // integer values are truthy if nonzero
                 case sbyte n: return n != 0;
@@ -83,6 +86,15 @@ namespace MiffTheFox
                     }
 
                 default:
+                    // if the type is a struct, compare to the default
+                    // if the struct doesn't implement Equals, then it will
+                    // return false and the type is always truthy
+
+                    if (obj.GetType().IsValueType)
+                    {
+                        return !Activator.CreateInstance(obj.GetType()).Equals(obj);
+                    }
+
                     // if we don't know what to do with the type,
                     // then assume it's true
                     return true;

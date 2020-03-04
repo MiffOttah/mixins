@@ -14,7 +14,7 @@ namespace MixinTests
         [TestMethod]
         public void TestNullTruthiness()
         {
-            Assert.IsFalse(Truthiness.IsTruthy(null));
+            Assert.IsFalse(Truthiness.IsTruthy<object>(null));
             Assert.IsFalse(Truthiness.IsTruthy((int?)null));
             Assert.IsFalse(Truthiness.IsTruthy(DBNull.Value));
         }
@@ -22,7 +22,7 @@ namespace MixinTests
         [TestMethod]
         [DataRow(true, true, DisplayName = "boolean true")]
         [DataRow(false, false, DisplayName = "boolean false")]
-        public void TestBooleanTruthiness(bool expected, object test)
+        public void TestBooleanTruthiness(bool expected, bool test)
         {
             Assert.AreEqual(expected, test.IsTruthy());
         }
