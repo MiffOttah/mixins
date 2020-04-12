@@ -62,6 +62,7 @@
     <Compile Include="GeneratorDictionaryTests.cs" />
     <Compile Include="CompareTests.cs" />
     <Compile Include="QueryStringTests.cs" />
+    <Compile Include="RoundRobinTests.cs" />
     <Compile Include="TruthinessExtensionsTests.cs" />
     <Compile Include="TruthinessTests.cs" />
   </ItemGroup>
