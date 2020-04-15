@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiffTheFox;
+using MiffTheFox.Collections;
 
 namespace MixinTests
 {
