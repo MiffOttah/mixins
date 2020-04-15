@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace MiffTheFox.Collections
 {
-    public class RoundRobin<T> : ICollection<T>, ICollection
+    internal class RoundRobin<T> : ICollection<T>, ICollection
     {
         private readonly T[] _Items;
         private int _ItemIndex;

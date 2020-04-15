@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MiffTheFox
+namespace MiffTheFox.Collections
 {
-    public class Cache<TKey, TValue> : IEnumerable<TValue>, IDisposable
+    internal class Cache<TKey, TValue> : IEnumerable<TValue>, IDisposable
     {
         private readonly Dictionary<TKey, TValue> _Values;
         private readonly Dictionary<TKey, DateTime> _Ages;
