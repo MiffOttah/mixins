@@ -65,6 +65,7 @@
     <Compile Include="RoundRobinTests.cs" />
     <Compile Include="TruthinessExtensionsTests.cs" />
     <Compile Include="TruthinessTests.cs" />
+    <Compile Include="EmptyListTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
