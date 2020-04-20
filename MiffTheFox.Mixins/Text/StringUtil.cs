@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MiffTheFox
+namespace MiffTheFox.Text
 {
-    public static class StringUtil
+    internal static class StringUtil
     {
         public static StringPartitionResult Partition(this string str, char needle)
         {

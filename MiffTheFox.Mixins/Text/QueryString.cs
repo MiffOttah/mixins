@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace MiffTheFox
+namespace MiffTheFox.Text
 {
-    public class QueryString : IDictionary<string, string>, ICloneable
+    internal class QueryString : IDictionary<string, string>, ICloneable
     {
         private readonly Dictionary<string, string> _Values;
 
