@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MixinTests
+namespace MixinTests.Collections
 {
     [TestClass]
     public class DoubleDictionaryTests

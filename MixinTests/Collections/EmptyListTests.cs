@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiffTheFox.Collections;
 
-namespace MixinTests
+namespace MixinTests.Collections
 {
     [TestClass]
     public class EmptyListTests

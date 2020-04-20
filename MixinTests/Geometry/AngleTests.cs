@@ -3,7 +3,7 @@ using MiffTheFox.Geometry;
 using AngleUnit = MiffTheFox.Geometry.Angle.AngleUnit;
 using System;
 
-namespace MixinTests
+namespace MixinTests.Geometry
 {
     [TestClass]
     public class AngleTests

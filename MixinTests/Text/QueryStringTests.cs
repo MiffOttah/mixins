@@ -2,7 +2,7 @@
 using MiffTheFox.Text;
 using System.Linq;
 
-namespace MixinTests
+namespace MixinTests.Text
 {
     [TestClass]
     public class QueryStringTests

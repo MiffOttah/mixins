@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MixinTests
+namespace MixinTests.Geometry
 {
     [TestClass]
     public class PortionTests

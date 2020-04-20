@@ -6,7 +6,7 @@ using System.Collections;
 using System.Globalization;
 using System.Linq;
 
-namespace MixinTests
+namespace MixinTests.Collections
 {
     [TestClass]
     public class RoundRobinTests
