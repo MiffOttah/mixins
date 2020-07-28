@@ -52,6 +52,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\LockingDictionaryTests.cs" />
     <Compile Include="Geometry\AngleTests.cs" />
     <Compile Include="Collections\CacheTests.cs" />
     <Compile Include="DelegateCallHelper.cs" />
