@@ -13,6 +13,7 @@ namespace MiffTheFox.Collections
         // The static shared list is initilized the first time the type is
         // referenced for a particular T.
         public static EmptyList<T> Shared { get; } = new EmptyList<T>();
+        private static readonly EmptyEnumerator _Enumerator = new EmptyEnumerator();
 
         public int Count => 0;
         public bool IsReadOnly => true;
@@ -20,7 +21,7 @@ namespace MiffTheFox.Collections
         public T this[int index]
         {
             // always throw the IndexOutOfRangeException since there are no
-            // possible valid indicies.
+            // possible valid indices.
             get => throw new IndexOutOfRangeException();
             set => throw new IndexOutOfRangeException();
         }
@@ -40,16 +41,16 @@ namespace MiffTheFox.Collections
         public void Insert(int index, T item) => throw new NotSupportedException();
         public void Clear() => throw new NotSupportedException();
 
-        // as with the accessor, there are no valid indicies into the list
+        // as with the accessor, there are no valid indices into the list
         public void RemoveAt(int index) => throw new ArgumentOutOfRangeException();
 
         // technically this is copying nothing into the array, so this is a no-op
         public void CopyTo(T[] array, int arrayIndex) { }
         
-        public IEnumerator<T> GetEnumerator() => new EmptyEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => new EmptyEnumerator();
+        public IEnumerator<T> GetEnumerator() => _Enumerator;
+        IEnumerator IEnumerable.GetEnumerator() => _Enumerator;
 
-        public class EmptyEnumerator : IEnumerator<T>
+        private class EmptyEnumerator : IEnumerator<T>
         {
             public T Current => default;
             object IEnumerator.Current => default(T);
