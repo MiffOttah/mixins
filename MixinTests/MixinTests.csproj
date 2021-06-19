@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Collections\CollectionUtilTests.cs" />
     <Compile Include="Collections\LockingDictionaryTests.cs" />
+    <Compile Include="Collections\EnumerableTests.cs" />
     <Compile Include="Geometry\AngleTests.cs" />
     <Compile Include="Collections\CacheTests.cs" />
     <Compile Include="DelegateCallHelper.cs" />
