@@ -4,6 +4,7 @@ using System.Text;
 
 namespace MiffTheFox.Text
 {
+    /*
     public readonly struct TokenString
     {
         private readonly TokenStringToken[] _Tokens;
@@ -50,4 +51,5 @@ namespace MiffTheFox.Text
             IsSpecialToken = isSpecialToken;
         }
     }
+    */
 }
