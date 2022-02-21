@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MiffTheFox.Collections;
 using MixinTests.Collections;
 using System;
 using System.Collections.Generic;
