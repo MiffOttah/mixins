@@ -68,6 +68,7 @@
     <Compile Include="Text\CharacterReaderTests.cs" />
     <Compile Include="Text\QueryStringTests.cs" />
     <Compile Include="Collections\RoundRobinTests.cs" />
+    <Compile Include="Text\StringBuilderAppendJoinTests.cs" />
     <Compile Include="TruthinessExtensionsTests.cs" />
     <Compile Include="TruthinessTests.cs" />
     <Compile Include="Collections\EmptyListTests.cs" />
