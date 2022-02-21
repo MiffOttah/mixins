@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MixinTests.Collections
+namespace MiffTheFox.Collections
 {
     [TestClass]
     public class AnonymousTypeEnumeratorTests
