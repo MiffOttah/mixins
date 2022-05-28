@@ -62,5 +62,25 @@ namespace MixinTests.Text
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => StringUtil.Partition("abc", -2, 1));
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => StringUtil.Partition("abc", 10, 1));
         }
+
+        [TestMethod]
+        [DataRow("abc,def,ghi", ',', "def", true)]
+        [DataRow("abc,def,ghi", ',', "jkl", false)]
+        [DataRow("abc,def,ghi", ',', "abc", true)]
+        [DataRow("abc,def,ghi", ',', "ghi", true)]
+        [DataRow("abc", ',', "abc", true)]
+        [DataRow("", ',', "abc", false)]
+        [DataRow("abc,,def", ',', "def", true)]
+        [DataRow("abc,,def", ',', "ghi", false)]
+        [DataRow("abc|def|ghi", '|', "de", false)]
+        [DataRow("abc|def|ghi", '|', "def2", false)]
+        [DataRow("abc|def|ghi", '|', "ghi2", false)]
+        [DataRow("abc|def|ghi", '|', "gh", false)]
+        [DataRow("abc|def|ghi", '|', "a2", false)]
+        public void TestSplitContains(string source, char partition, string needle, bool expected)
+        {
+            bool result = StringUtil.SplitContains(source, partition, needle);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

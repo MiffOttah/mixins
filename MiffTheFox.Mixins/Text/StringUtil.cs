@@ -44,6 +44,7 @@ namespace MiffTheFox.Text
             }
         }
 
+        // TODO: test
         public static int IndexOf(this string str, Func<char, bool> test)
         {
             if (str is null) throw new ArgumentNullException(nameof(str));
@@ -56,6 +57,7 @@ namespace MiffTheFox.Text
             return -1;
         }
 
+        // TODO: test
         public static int LastIndexOf(this string str, Func<char, bool> test)
         {
             if (str is null) throw new ArgumentNullException(nameof(str));
@@ -105,6 +107,58 @@ namespace MiffTheFox.Text
                     return hash;
                 }
             }
+        }
+
+        public static bool SplitContains(this string str, char partition, string needle)
+        {
+            if (str is null)
+            {
+                throw new ArgumentNullException(nameof(str));
+            }
+
+            if (string.IsNullOrEmpty(needle) || needle.IndexOf(partition) != -1)
+            {
+                throw new ArgumentException($"'{nameof(needle)}' cannot be null or empty, nor can it contain the value of '{nameof(partition)}'.", nameof(needle));
+            }
+
+            if (str.Length == 0) return false;
+
+            int matchIndex = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (matchIndex > -1 && str[i] == needle[matchIndex])
+                {
+                    matchIndex++;
+
+                    // matched the entire needle
+                    if (matchIndex >= needle.Length)
+                    {
+                        // are we actually at the end of the piece
+                        if (i >= (str.Length - 1) || str[i + 1] == partition)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            matchIndex = -1;
+                        }
+                    }
+                }
+                else if (str[i] == partition)
+                {
+                    // start of a new partition, so start matching
+                    matchIndex = 0;
+                }
+                else
+                {
+                    // this area is not a match, so just continue on until partition is matched
+                    matchIndex = -1;
+                }
+            }
+
+            // nothing found
+            return false;
         }
     }
 }
