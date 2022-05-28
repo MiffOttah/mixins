@@ -32,16 +32,15 @@ namespace MiffTheFox.Text
 
             if (index == -1)
             {
-                return new StringPartitionResult { Head = str, Tail = string.Empty };
+                return new StringPartitionResult(str, string.Empty);
             }
             else
             {
                 int tailStart = index + partitionLength;
-                return new StringPartitionResult
-                {
-                    Head = str.Remove(index),
-                    Tail = (tailStart < str.Length) ? str.Substring(index + partitionLength) : string.Empty
-                };
+                return new StringPartitionResult(
+                    str.Remove(index),
+                    (tailStart < str.Length) ? str.Substring(index + partitionLength) : string.Empty
+                );
             }
         }
 
@@ -69,10 +68,16 @@ namespace MiffTheFox.Text
             return -1;
         }
 
-        public struct StringPartitionResult
+        public readonly struct StringPartitionResult
         {
-            public string Head;
-            public string Tail;
+            public string Head { get; }
+            public string Tail { get; }
+
+            public StringPartitionResult(string head, string tail)
+            {
+                Head = head;
+                Tail = tail;
+            }
 
             public void Deconstruct(out string head, out string tail)
             {
@@ -87,11 +92,7 @@ namespace MiffTheFox.Text
 
             public override bool Equals(object obj)
             {
-                if (obj is StringPartitionResult that)
-                {
-                    return this.Head == that.Head && this.Tail == that.Tail;
-                }
-                return base.Equals(obj);
+                return (obj is StringPartitionResult that) ? (Head == that.Head && Tail == that.Tail) : base.Equals(obj);
             }
 
             public override int GetHashCode()
