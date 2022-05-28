@@ -61,6 +61,6 @@ namespace MixinTests.Text
             Assert.ThrowsException<ArgumentNullException>(() => StringUtil.Partition(null, 0, 1));
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => StringUtil.Partition("abc", -2, 1));
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => StringUtil.Partition("abc", 10, 1));
-        }D
+        }
     }
 }
