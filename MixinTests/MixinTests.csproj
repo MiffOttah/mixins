@@ -61,6 +61,7 @@
     <Compile Include="DelegateCallHelper.cs" />
     <Compile Include="DisposbleCollectionTests.cs" />
     <Compile Include="Collections\DoubleDictionaryTests.cs" />
+    <Compile Include="Geometry\AspectScaleTests.cs" />
     <Compile Include="Geometry\PortionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneratorDictionaryTests.cs" />
